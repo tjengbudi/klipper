@@ -478,12 +478,12 @@ class DockableProbe:
         if self._check_distance(dist=self.detach_distance):
             self._align_to_vector(self.dock_angle)
         else:
+#            self.toolhead.manual_move(
+#                [self.detach_position[0], self.detach_position[1], None],
+#                 self.travel_speed)
             self.toolhead.manual_move(
-                [self.detach_position[0], self.detach_position[1], None],
-                 self.travel_speed)
-        self.toolhead.manual_move(
-            [self.dock_position[0], self.dock_position[1], None],
-             self.attach_speed)
+                [self.dock_position[0], self.dock_position[1], None],
+                 self.attach_speed)
         self.detach_gcode.run_gcode_from_command()
         self.toolhead.manual_move(
             [self.detach_position[0], self.detach_position[1], None],
